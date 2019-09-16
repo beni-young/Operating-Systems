@@ -57,12 +57,12 @@ def main():
 
     levellist = [parentnode]
 
-    for i in linelist:
-        for j in levellist:
-            if i == j:
-                ind = linelist.index(i) + 1
-                lnd = levellist.index(j) + 1
-                levellist.insert(lnd, levellist[lnd] + " " + linelist[ind])
+#    for i in linelist:
+#        for j in levellist:
+#            if i == j:
+#                ind = linelist.index(i) + 1
+#                lnd = levellist.index(j) + 1
+#                levellist.insert(lnd, levellist[lnd] + " " + linelist[ind])
             #else:
              #   levellist.append(i)
                 # levellist.append(linelist[linelist.index(j+1)])
