@@ -61,17 +61,26 @@ def main():
             testlist.append(chk)                               # the '->' and '\n' in comparelist are left alone
 
 
-    levellist = [parentnode]
-
-#    for i in linelist:
-#        for j in levellist:
-#            if i == j:
-#                ind = linelist.index(i) + 1
-#                lnd = levellist.index(j) + 1
-#                levellist.insert(lnd, levellist[lnd] + " " + linelist[ind])
-            #else:
-             #   levellist.append(i)
-                # levellist.append(linelist[linelist.index(j+1)])
+    # My attempt at putting Levels in the demo.dot file according to Process ID
+    # I have the Parent node and from there can calculate where each node is from Parent
+    
+    levellist = [parentnode]    
+    i = 0
+    j = 0
+    counter = 0
+    while linelist:
+        print(levellist)
+        for i in linelist:
+            for j in levellist:
+                if i == j and counter == 0:
+                    #levellist.append(" ")
+                    print(linelist.index(i)) #linelist.pop(linelist.index(i))        #levellist[levellist.index(j+1)] = levellist[levellist.index(j+1)]  +  linelist[linelist.index(i+1)]
+                    counter == 1
+                else:
+                    levellist.append(i)
+                    linelist.pop(linelist.index(i))
+                    counter = 0
+                        
     
     print(levellist)
                                  
