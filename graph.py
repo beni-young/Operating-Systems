@@ -40,6 +40,7 @@ def main():
 
     # Creates dot file for graphviz viewing
     g = open("demo.dot", "w")
+    g.writelines("Digraph D {\n") 
     quotes = "\""
     grr = []
 
@@ -47,7 +48,7 @@ def main():
     # and changes it Process ID -> Process ID if Parent isn't actually Parent node for graphviz
     for chk in comparelist:
         if not topnode in chk and "Parent" in chk:
-            grr = quotes + chk + quotes + "\n"                 # adds in back the quotes that was taken out
+            grr = quotes + chk + quotes                        # adds in back the quotes that was taken out
             testlist.append(grr.replace("Parent", "Process"))  #changes Parent to Process if not Parent node with Level: 0
         elif topnode in chk:
             #######grr = quotes + chk + quotes                     
@@ -65,21 +66,15 @@ def main():
     # I have the Parent node and from there can calculate where each node is from Parent
     
     levellist = [parentnode]    
-    i = 0
-    j = 0
     counter = 0
-    while linelist:
-        print(levellist)
-        for i in linelist:
-            for j in levellist:
-                if i == j and counter == 0:
-                    #levellist.append(" ")
-                    print(linelist.index(i)) #linelist.pop(linelist.index(i))        #levellist[levellist.index(j+1)] = levellist[levellist.index(j+1)]  +  linelist[linelist.index(i+1)]
-                    counter == 1
-                else:
-                    levellist.append(i)
-                    linelist.pop(linelist.index(i))
-                    counter = 0
+
+    for a in parentlist:
+        if parentnode == a:
+            levellist.append(childlist[counter])
+            
+        counter += 1             
+                    
+                    
                         
     
     print(levellist)
@@ -93,7 +88,7 @@ def main():
 
     # Writes out the new graph dot file demo.dot
     g.writelines(testlist)
-    g.write("")
+    g.write("}")
     g.close()
     
 if __name__== "__main__":

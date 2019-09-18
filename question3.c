@@ -1,6 +1,7 @@
 #include <stdio.h> 
 #include <sys/types.h>
 #include <unistd.h>
+#include <sys/wait.h>
 
 // Beni Young Assignment 1 for CSCI 4404
 
@@ -19,16 +20,22 @@ int main()
   fp = fopen("simplegraph.dot", "w");
   // Fork for the number of times user input
   for( int i = 0; i  < n; i++) {
-    process = fork();
+    pid = fork();
 
     // This is suppose to grab the init Process ID that starts the forks()
     // not sure if thats the case though
     // This is test printout to see what is going to be stored
-    if(process > 0 && i == 0){
+    if(pid > 0 && i == 0){
+      waitpid(pid);
       printf("Process ID: %d \n", getpid());
+      break;
+    }
+    else if(pid > 0){
+	waitpid(pid);
+	break;	
     }
     // If Process is zero than its a Child process and can print its Parent fork process 
-    else if(process == 0) {
+    else if(pid == 0) {
       printf("Process ID: %d Parent ID: %d \n", getpid(), getppid());
     }
     
