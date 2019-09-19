@@ -73,16 +73,16 @@ def main():
 #            levellist.append(childlist[counter])
             
 #        counter += 1             
-    def get_levels(tree, roots):
-        result = []
-        roots = list(roots)
-        while roots:
-            result.append(roots)
-            roots = [c for k in roots for c in tree]
+#    def get_levels(tree, roots):
+#        result = []
+#        roots = list(roots)
+#        while roots:
+#            result.append(roots)
+#            roots = [c for k in roots for c in tree]
+#
+#        return result
 
-        return result
-
-    get_levels(childlist, parentnode)
+#    get_levels(childlist, parentnode)
      
 
 ####    print(testlist)

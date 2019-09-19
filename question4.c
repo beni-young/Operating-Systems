@@ -38,7 +38,7 @@ int main()
 
   // Writes to file process.txt in partial graphviz dot format
   // "Parent ID: [numbers]" -> "Process ID: [numbers]"
-  fprintf(fp, "\"Parent ID: %d\" -> \"Process ID: %d\" Level: %d \n", getppid(), getpid(), level);
+  fprintf(fp, "\"Parent ID: %d\" -> \"Process ID: %d Level: %d\" \n", getppid(), getpid(), level);
   
   sleep(1);
 
