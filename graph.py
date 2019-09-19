@@ -65,24 +65,25 @@ def main():
     # My attempt at putting Levels in the demo.dot file according to Process ID
     # I have the Parent node and from there can calculate where each node is from Parent
     
-    levellist = [parentnode]    
-    counter = 0
+#    levellist = [parentnode]    
+#    counter = 0
 
-    for a in parentlist:
-        if parentnode == a:
-            levellist.append(childlist[counter])
+#    for a in parentlist:
+#        if parentnode == a:
+#            levellist.append(childlist[counter])
             
-        counter += 1             
-                    
-                    
-                        
-    
-    print(levellist)
-                                 
-####    for cln in testlist:
-####        if parentnode in cln:
-####            xrr = cln + "Level: " + level
-      
+#        counter += 1             
+    def get_levels(tree, roots):
+        result = []
+        roots = list(roots)
+        while roots:
+            result.append(roots)
+            roots = [c for k in roots for c in tree]
+
+        return result
+
+    get_levels(childlist, parentnode)
+     
 
 ####    print(testlist)
 
